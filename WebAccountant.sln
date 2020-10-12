@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAccountantASP", "WebAccountantASP\WebAccountantASP.csproj", "{7826DD01-E357-41B4-A9D2-4632FB020A2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7826DD01-E357-41B4-A9D2-4632FB020A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7826DD01-E357-41B4-A9D2-4632FB020A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7826DD01-E357-41B4-A9D2-4632FB020A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7826DD01-E357-41B4-A9D2-4632FB020A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {97E330A0-D58E-4E82-9627-E6771F24C22B}
+	EndGlobalSection
+EndGlobal
