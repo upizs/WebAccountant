@@ -34,10 +34,12 @@ namespace WebAccountantASP.Controllers
 
             var transactions = _context.Transactions.Include(s => s.Debit).Include(s => s.Credit).ToList();
             var transaction = new Transaction();
+            var accounts = _context.Accounts.ToList();
             var viewModel = new AddTransactionViewModel
             {
                 Transaction = transaction,
-                Transactions = transactions
+                Transactions = transactions,
+                Accounts = accounts
             };
 
             return View(viewModel);
