@@ -85,3 +85,4 @@ D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.GenerateResource.cache
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.AddedTransactions.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.seedSomeTransactions.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.ReportModelAdded.resources
