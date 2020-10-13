@@ -1,0 +1,44 @@
+﻿@model WebAccountantASP.ViewModel.ReportViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div name="listOftransactions">
+    <h4>List of Transactions</h4>
+    <hr />
+    @if (Model != null)
+    {
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(e => e.Transaction.Date)</b></td>
+                    <td><b>@Html.DisplayNameFor(e => e.Transaction.DebitId)</b> </td>
+                    <td><b>@Html.DisplayNameFor(e => e.Transaction.CreditId)</b></td>
+                    <td><b>@Html.DisplayNameFor(e => e.Transaction.Value)</b></td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var transaction in Model.Transactions)
+                {
+                    <tr>
+                        <td>@transaction.Date</td>
+                        <td>@transaction.DebitId </td>
+                        <td>@transaction.CreditId</td>
+                        <td>@transaction.Value</td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    }
+</div>
