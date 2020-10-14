@@ -9,7 +9,8 @@ namespace WebAccountantASP.ViewModel
 {
     public class ReportViewModel
     {
-        public Transaction Transaction { get; set; }
-        public IEnumerable<Transaction> Transactions { get; set; }
+        public Report Report { get; set; }
+        public IEnumerable<Report> Reports { get; set; }
+        public IEnumerable<Account> Accounts { get; set; }
     }
 }

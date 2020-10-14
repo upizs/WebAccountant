@@ -19,21 +19,20 @@
 
             <thead>
                 <tr>
-                    <td><b>@Html.DisplayNameFor(e => e.Transaction.Date)</b></td>
-                    <td><b>@Html.DisplayNameFor(e => e.Transaction.DebitId)</b> </td>
-                    <td><b>@Html.DisplayNameFor(e => e.Transaction.CreditId)</b></td>
-                    <td><b>@Html.DisplayNameFor(e => e.Transaction.Value)</b></td>
+                    <td><b>@Html.DisplayNameFor(e => e.Report.Account)</b></td>
+                    <td><b>@Html.DisplayNameFor(e => e.Report.DebitValue)</b> </td>
+                    <td><b>@Html.DisplayNameFor(e => e.Report.CreditValue)</b></td>
                 </tr>
             </thead>
 
             <tbody>
-                @foreach (var transaction in Model.Transactions)
+                @foreach (var report in Model.Reports)
                 {
                     <tr>
-                        <td>@transaction.Date</td>
-                        <td>@transaction.DebitId </td>
-                        <td>@transaction.CreditId</td>
-                        <td>@transaction.Value</td>
+                        <td>@report.Account.Name</td>
+                        <td>@report.DebitValue </td>
+                        <td>@report.CreditValue</td>
+                        
                     </tr>
                 }
 

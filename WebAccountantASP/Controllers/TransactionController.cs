@@ -66,7 +66,7 @@ namespace WebAccountantASP.Controllers
             if (accountCredited.IsDebit)
                 accountCredited.Value -= transaction.Value;
             else
-
+                accountCredited.Value += transaction.Value;
 
 
             //Add the transaction to database and save
