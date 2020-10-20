@@ -57,16 +57,16 @@ namespace WebAccountantASP.Controllers
             var accountCredited = _context.Accounts.Single(c => c.Id == transaction.CreditId);
 
             //Update Debit
-            if (accountDebited.IsDebit)
-                accountDebited.Value += transaction.Value;
-            else
-                accountDebited.Value -= transaction.Value;
+            //if (accountDebited.IsDebit)
+            //    accountDebited.Value += transaction.Value;
+            //else
+            //    accountDebited.Value -= transaction.Value;
 
-            //Update Credit
-            if (accountCredited.IsDebit)
-                accountCredited.Value -= transaction.Value;
-            else
-                accountCredited.Value += transaction.Value;
+            ////Update Credit
+            //if (accountCredited.IsDebit)
+            //    accountCredited.Value -= transaction.Value;
+            //else
+            //    accountCredited.Value += transaction.Value;
 
 
             //Add the transaction to database and save

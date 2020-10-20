@@ -66,14 +66,14 @@
             @Html.ValidationMessageFor(model => model.Account.Value, "", new { @class = "text-danger" })
         </div>
     </div>
-
     <div class="form-group">
-        @Html.LabelFor(model => model.Account.IsDebit, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.Account.IsDebit)
-                @Html.ValidationMessageFor(model => model.Account.IsDebit, "", new { @class = "text-danger" })
-            </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Account.AccountType)
+            @Html.DropDownListFor(m => m.Account.AccountType,
+                                    new SelectList(Model.AccountTypes),
+                                    "Select Type",
+                                    new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Account.AccountType, "", new { @class = "text-danger" })
         </div>
     </div>
 

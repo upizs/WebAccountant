@@ -150,8 +150,33 @@
     <Compile Include="Migrations\202010131914390_ReportModelAdded.designer.cs">
       <DependentUpon>202010131914390_ReportModelAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010180408256_Removing IsDebit bool.cs" />
+    <Compile Include="Migrations\202010180408256_Removing IsDebit bool.designer.cs">
+      <DependentUpon>202010180408256_Removing IsDebit bool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010180414461_Added account type.cs" />
+    <Compile Include="Migrations\202010180414461_Added account type.designer.cs">
+      <DependentUpon>202010180414461_Added account type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010200336531_Added AccountTypeId.cs" />
+    <Compile Include="Migrations\202010200336531_Added AccountTypeId.designer.cs">
+      <DependentUpon>202010200336531_Added AccountTypeId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010200343413_Added Account attributes.cs" />
+    <Compile Include="Migrations\202010200343413_Added Account attributes.designer.cs">
+      <DependentUpon>202010200343413_Added Account attributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010200435572_Clearing All the tables.cs" />
+    <Compile Include="Migrations\202010200435572_Clearing All the tables.designer.cs">
+      <DependentUpon>202010200435572_Clearing All the tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010200451569_experimenting with AccountTypeID.cs" />
+    <Compile Include="Migrations\202010200451569_experimenting with AccountTypeID.designer.cs">
+      <DependentUpon>202010200451569_experimenting with AccountTypeID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AccountType.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Transaction.cs" />
@@ -228,6 +253,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010131914390_ReportModelAdded.resx">
       <DependentUpon>202010131914390_ReportModelAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010180408256_Removing IsDebit bool.resx">
+      <DependentUpon>202010180408256_Removing IsDebit bool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010180414461_Added account type.resx">
+      <DependentUpon>202010180414461_Added account type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010200336531_Added AccountTypeId.resx">
+      <DependentUpon>202010200336531_Added AccountTypeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010200343413_Added Account attributes.resx">
+      <DependentUpon>202010200343413_Added Account attributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010200435572_Clearing All the tables.resx">
+      <DependentUpon>202010200435572_Clearing All the tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010200451569_experimenting with AccountTypeID.resx">
+      <DependentUpon>202010200451569_experimenting with AccountTypeID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

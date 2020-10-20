@@ -10,5 +10,6 @@ namespace WebAccountantASP.ViewModel
     {
         public IEnumerable<Account> Accounts { get; set; }
         public Account Account { get; set; }
+        public IEnumerable<AccountType> AccountTypes { get; set; }
     }
 }

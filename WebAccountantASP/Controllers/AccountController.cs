@@ -33,12 +33,15 @@ namespace WebAccountantASP.Controllers
         {
             var accounts = _context.Accounts.ToList();
             var account = new Account();
+            var accountTypes = Enum.GetValues(typeof(AccountType)).Cast<AccountType>().ToList();
 
             //set up a viewModel so that I can use a list of accounts and a single account
             var viewModel = new AddAccountViewModel
             {
                 Accounts = accounts,
-                Account = account
+                Account = account,
+                AccountTypes = accountTypes
+                
             };
 
             return View(viewModel);

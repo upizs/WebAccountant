@@ -86,3 +86,9 @@ D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.Gen
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.AddedTransactions.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.seedSomeTransactions.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.ReportModelAdded.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.RemovingIsDebitbool.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.Addedaccounttype.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.AddedAccountTypeId.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.AddedAccountattributes.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.ClearingAllthetables.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.experimentingwithAccountTypeID.resources
