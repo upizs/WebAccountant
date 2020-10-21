@@ -20,22 +20,21 @@
             <thead>
                 <tr>
                     <td><b>@Html.DisplayNameFor(e => e.Report.Account)</b></td>
-                    <td><b>@Html.DisplayNameFor(e => e.Report.DebitValue)</b> </td>
-                    <td><b>@Html.DisplayNameFor(e => e.Report.CreditValue)</b></td>
+                    <td><b>@Html.DisplayNameFor(e => e.Report.Value)</b> </td>
                 </tr>
             </thead>
 
             <tbody>
-                @foreach (var report in Model.Reports)
+
+                @foreach (var report in Model.ExpenseReports)
                 {
                     <tr>
                         <td>@report.Account.Name</td>
-                        <td>@report.DebitValue </td>
-                        <td>@report.CreditValue</td>
+                        <td>@report.Value </td>
                         
                     </tr>
                 }
-
+                
             </tbody>
 
         </table>

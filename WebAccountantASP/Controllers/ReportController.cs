@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 using WebAccountantASP.Models;
@@ -33,31 +34,54 @@ namespace WebAccountantASP.Controllers
         {
             //Finds last Thursday to produce report for the last week starting last friday
             DateTime LastThurday = FindLastThursday();
-            var reports = new List<Report>();
+            var expenseReports = new List<Report>();
+            var incomeReports = new List<Report>();
             var thisWeeksTransactions = _context.Transactions.Where(x => x.Date > LastThurday).ToList();
             var accounts = _context.Accounts.ToList();
 
-            //Create a new report for each account in last weeks transactions and add to the list
+            //Find All Expense accounts in this weeks transactions
             foreach (var acc in accounts)
             {
-                if (thisWeeksTransactions.Where(x => x.DebitId == acc.Id || x.CreditId == acc.Id).Any())
+                var isExpense = acc.AccountType == AccountType.Expense;
+                //find all the transactions of this account
+                var thisAccountTransactions = thisWeeksTransactions.Where(x => x.DebitId == acc.Id).ToList();
+                if (isExpense && thisAccountTransactions.Any())
                 {
                     var report = new Report();
-                    report.AccountId = acc.Id;
                     report.Account = acc;
-                    report.DebitValue = thisWeeksTransactions.Where(x => x.DebitId == acc.Id).Select(x => x.Value).Sum();
-                    report.CreditValue = thisWeeksTransactions.Where(x => x.CreditId == acc.Id).Select(x => x.Value).Sum();
-                    reports.Add(report);
-
+                    //sum the value of transactions for this account
+                    report.Value += thisAccountTransactions.Select(x => x.Value).Sum();
+                    expenseReports.Add(report);
                 }
             }
+
+            //Find All Income accounts in this weeks transactions
+            foreach (var acc in accounts)
+            {
+                var isIncome = acc.AccountType == AccountType.Income;
+                //find all the transactions of this account
+                var thisAccountTransactions = thisWeeksTransactions.Where(x => x.CreditId == acc.Id).ToList();
+                if (isIncome && thisAccountTransactions.Any())
+                {
+                    var report = new Report();
+                    report.Account = acc;
+                    //sum the value of transactions for this account
+                    report.Value += thisAccountTransactions.Select(x => x.Value).Sum();
+                    incomeReports.Add(report);
+                }
+            }
+
+
 
 
             var reportViewModel = new ReportViewModel()
             {
                 Report = new Report(),
-                Reports = reports,
-                Accounts = accounts
+                ExpenseReports = expenseReports,
+                IncomeReports = incomeReports,
+                ExpenseSum = expenseReports.Select(x => x.Value).Sum(),
+                IncomeSum = incomeReports.Select(x => x.Value).Sum(),
+            Accounts = accounts
 
             };
 
@@ -77,5 +101,6 @@ namespace WebAccountantASP.Controllers
 
             return date;
         }
+
     }
 }

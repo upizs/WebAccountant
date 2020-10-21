@@ -174,6 +174,14 @@
     <Compile Include="Migrations\202010200451569_experimenting with AccountTypeID.designer.cs">
       <DependentUpon>202010200451569_experimenting with AccountTypeID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010211842242_Report now has only one value.cs" />
+    <Compile Include="Migrations\202010211842242_Report now has only one value.designer.cs">
+      <DependentUpon>202010211842242_Report now has only one value.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010211929303_Removed AccountID fom epot.cs" />
+    <Compile Include="Migrations\202010211929303_Removed AccountID fom epot.designer.cs">
+      <DependentUpon>202010211929303_Removed AccountID fom epot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountType.cs" />
@@ -271,6 +279,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010200451569_experimenting with AccountTypeID.resx">
       <DependentUpon>202010200451569_experimenting with AccountTypeID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010211842242_Report now has only one value.resx">
+      <DependentUpon>202010211842242_Report now has only one value.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010211929303_Removed AccountID fom epot.resx">
+      <DependentUpon>202010211929303_Removed AccountID fom epot.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

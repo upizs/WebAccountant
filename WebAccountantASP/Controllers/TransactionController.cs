@@ -56,17 +56,18 @@ namespace WebAccountantASP.Controllers
             var accountDebited = _context.Accounts.Single(c => c.Id == transaction.DebitId);
             var accountCredited = _context.Accounts.Single(c => c.Id == transaction.CreditId);
 
-            //Update Debit
-            //if (accountDebited.IsDebit)
-            //    accountDebited.Value += transaction.Value;
-            //else
-            //    accountDebited.Value -= transaction.Value;
+            //Update Debited Account, Expense Accounts gain value when debited 
+            if (accountDebited.AccountType == AccountType.Debit || accountDebited.AccountType == AccountType.Expense)
+                accountDebited.Value += transaction.Value;
+            //Credit account loose value if debited
+            else
+                accountDebited.Value -= transaction.Value;
 
-            ////Update Credit
-            //if (accountCredited.IsDebit)
-            //    accountCredited.Value -= transaction.Value;
-            //else
-            //    accountCredited.Value += transaction.Value;
+            //Update Credited Account, Credit account gains value when credited and Income gains value.
+            if (accountCredited.AccountType == AccountType.Credit || accountCredited.AccountType == AccountType.Income)
+                accountCredited.Value += transaction.Value;
+            else
+                accountCredited.Value -= transaction.Value;
 
 
             //Add the transaction to database and save
