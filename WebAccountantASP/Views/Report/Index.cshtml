@@ -10,6 +10,37 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<div>
+    @if (Model != null)
+    {
+        <table class="table">
+            
+
+            <tbody>
+                <tr>
+                    <td><b>Total Income</b></td>
+                    <td>@Model.IncomeSum</td>
+                </tr>
+                <tr>
+                    <td><b>Total Expense</b></td>
+                    <td>@Model.ExpenseSum</td>
+                </tr>
+                <tr>
+                    <td><b>Diference</b></td>
+                    <td>@Model.Diference</td>
+                </tr>
+
+            </tbody>
+
+
+
+        </table>
+    }
+</div>
+
+
+
 <div name="listOftransactions">
     <h4>List of Transactions</h4>
     <hr />

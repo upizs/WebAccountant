@@ -14,6 +14,18 @@ namespace WebAccountantASP.ViewModel
         public IEnumerable<Report> ExpenseReports { get; set; }
         public double IncomeSum { get; set; }
         public double ExpenseSum { get; set; }
+        public double Diference { get; set; }
+        
         public IEnumerable<Account> Accounts { get; set; }
+        public ReportViewModel(IEnumerable<Report> income, IEnumerable<Report> expense, IEnumerable<Account> accounts)
+        {
+            Report = new Report();
+            Accounts = accounts;
+            IncomeReports = income;
+            ExpenseReports = expense;
+            IncomeSum = IncomeReports.Select(x => x.Value).Sum();
+            ExpenseSum = ExpenseReports.Select(x => x.Value).Sum();
+            Diference = IncomeSum - ExpenseSum;
+        }
     }
 }

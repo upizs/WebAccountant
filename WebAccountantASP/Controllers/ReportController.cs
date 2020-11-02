@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -19,6 +20,7 @@ namespace WebAccountantASP.Controllers
         public ReportController()
         {
             _context = new MyDbContext();
+            
         }
 
         protected override void Dispose(bool disposing)
@@ -27,74 +29,52 @@ namespace WebAccountantASP.Controllers
         }
         #endregion
 
+        #region Properties
 
+        
 
-        // GET: Report
+        #endregion
+
+        // Shows This weeks Report
         public ActionResult Index()
         {
             //Finds last Thursday to produce report for the last week starting last friday
-            DateTime LastThurday = FindLastThursday();
-            var expenseReports = new List<Report>();
-            var incomeReports = new List<Report>();
-            var thisWeeksTransactions = _context.Transactions.Where(x => x.Date > LastThurday).ToList();
+            DateTime LastFriday = FindLastFriday();
+            DateTime FirstDayOfTheMonth = FindTheFirstDayOfThisMonth();
+
+
+            //Get all the transactions between selected time period
+            var thisWeeksTransactions = GetTransactions(LastFriday);
+            var thisMonthsTransactions = GetTransactions(FirstDayOfTheMonth);
+
             var accounts = _context.Accounts.ToList();
 
-            //Find All Expense accounts in this weeks transactions
-            foreach (var acc in accounts)
-            {
-                var isExpense = acc.AccountType == AccountType.Expense;
-                //find all the transactions of this account
-                var thisAccountTransactions = thisWeeksTransactions.Where(x => x.DebitId == acc.Id).ToList();
-                if (isExpense && thisAccountTransactions.Any())
-                {
-                    var report = new Report();
-                    report.Account = acc;
-                    //sum the value of transactions for this account
-                    report.Value += thisAccountTransactions.Select(x => x.Value).Sum();
-                    expenseReports.Add(report);
-                }
-            }
+            //Get this weeks reports 
+            var thisWeeksExpenseReports = GetReports(AccountType.Expense, thisWeeksTransactions, accounts);
+            var thisWeeksIncomeReports = GetReports(AccountType.Income, thisWeeksTransactions, accounts);
 
-            //Find All Income accounts in this weeks transactions
-            foreach (var acc in accounts)
-            {
-                var isIncome = acc.AccountType == AccountType.Income;
-                //find all the transactions of this account
-                var thisAccountTransactions = thisWeeksTransactions.Where(x => x.CreditId == acc.Id).ToList();
-                if (isIncome && thisAccountTransactions.Any())
-                {
-                    var report = new Report();
-                    report.Account = acc;
-                    //sum the value of transactions for this account
-                    report.Value += thisAccountTransactions.Select(x => x.Value).Sum();
-                    incomeReports.Add(report);
-                }
-            }
+            //Get this months reports
+            var thisMonthsExpenseReports = GetReports(AccountType.Expense, thisMonthsTransactions, accounts);
+            var thisMonthsIncomeReports = GetReports(AccountType.Income, thisMonthsTransactions, accounts);
 
 
-
-
-            var reportViewModel = new ReportViewModel()
-            {
-                Report = new Report(),
-                ExpenseReports = expenseReports,
-                IncomeReports = incomeReports,
-                ExpenseSum = expenseReports.Select(x => x.Value).Sum(),
-                IncomeSum = incomeReports.Select(x => x.Value).Sum(),
-            Accounts = accounts
-
-            };
+            //create a report viewModel
+            var reportViewModel = new ReportViewModel(thisWeeksIncomeReports, thisWeeksExpenseReports, accounts);
+           
 
             return View(reportViewModel);
         }
 
+        //This months Report
+
+        #region Helper Methods
 
         //Finds the date of the last thursday
-        public DateTime FindLastThursday()
+        public DateTime FindLastFriday()
         {
             
             var date = DateTime.Now;
-            while (date.DayOfWeek != DayOfWeek.Thursday)
+            while (date.DayOfWeek != DayOfWeek.Friday)
             {
                 date = date.AddDays(-1);
             }
@@ -102,5 +82,51 @@ namespace WebAccountantASP.Controllers
             return date;
         }
 
+        //Finds the first date of this month
+        public DateTime FindTheFirstDayOfThisMonth()
+        {
+            var date = DateTime.Now;
+            var firstDayOfTheMonth = new DateTime(date.Year, date.Month, 1);
+            return firstDayOfTheMonth;
+        }
+
+        //Gets a list of transaction from the given date
+        public List<Transaction> GetTransactions(DateTime date)
+        {
+            var transactions = _context.Transactions.Where(x => x.Date >= date).ToList();
+            return transactions;
+        }
+
+        //Creates a list of reports for each account based on given type and list
+        public List<Report> GetReports (AccountType accountType, List<Transaction> transactions, List<Account> accounts)
+        {
+            var reports = new List<Report>();
+            foreach (var acc in accounts)
+            {
+                var isExpense = acc.AccountType == accountType;
+                var thisAccountTransactions = new List<Transaction>();
+
+                //Find all transactions for this account in given list
+                //Check different Id because of how accounting works. Expense is debit and Income is Credit
+                if (accountType == AccountType.Expense)
+                    thisAccountTransactions = transactions.Where(x => x.DebitId == acc.Id).ToList();
+                else if(accountType == AccountType.Income)
+                    thisAccountTransactions = transactions.Where(x => x.CreditId == acc.Id).ToList();
+                
+                
+                if (isExpense && thisAccountTransactions.Any())
+                {
+                    var report = new Report();
+                    report.Account = acc;
+                    //sum the value of transactions for this account
+                    report.Value += thisAccountTransactions.Select(x => x.Value).Sum();
+                    reports.Add(report);
+                }
+            }
+            return reports;
+
+        }
+
+        #endregion
     }
 }
