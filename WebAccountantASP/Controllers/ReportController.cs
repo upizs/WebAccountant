@@ -40,12 +40,14 @@ namespace WebAccountantASP.Controllers
         {
             //Finds last Thursday to produce report for the last week starting last friday
             DateTime LastFriday = FindLastFriday();
-            DateTime FirstDayOfTheMonth = FindTheFirstDayOfThisMonth();
 
+            //Get all the transactions and sort them by year and month
+            var transactions = _context.Transactions.ToList();
+
+            var archivedTransactions = ArchiveTransactions(transactions);
 
             //Get all the transactions between selected time period
-            var thisWeeksTransactions = GetTransactions(LastFriday);
-            var thisMonthsTransactions = GetTransactions(FirstDayOfTheMonth);
+            var thisWeeksTransactions = GetTransactions(LastFriday, transactions);
 
             var accounts = _context.Accounts.ToList();
 
@@ -53,19 +55,28 @@ namespace WebAccountantASP.Controllers
             var thisWeeksExpenseReports = GetReports(AccountType.Expense, thisWeeksTransactions, accounts);
             var thisWeeksIncomeReports = GetReports(AccountType.Income, thisWeeksTransactions, accounts);
 
-            //Get this months reports
-            var thisMonthsExpenseReports = GetReports(AccountType.Expense, thisMonthsTransactions, accounts);
-            var thisMonthsIncomeReports = GetReports(AccountType.Income, thisMonthsTransactions, accounts);
-
 
             //create a report viewModel
-            var reportViewModel = new ReportViewModel(thisWeeksIncomeReports, thisWeeksExpenseReports, accounts);
+            var reportViewModel = new ReportViewModel(thisWeeksIncomeReports, thisWeeksExpenseReports, accounts, archivedTransactions);
            
 
             return View(reportViewModel);
         }
 
-        //This months Report
+        public ActionResult MontlyReport(int year, int month)
+        {
+            var transactions = _context.Transactions.ToList();
+            var accounts = _context.Accounts.ToList();
+
+            var monthlyTransactions = GetMonthlyTransactions(transactions, month, year);
+
+            var monthlyExpenseReports = GetReports(AccountType.Expense, monthlyTransactions, accounts);
+            var montlyIncomeReports = GetReports(AccountType.Income, monthlyTransactions, accounts);
+
+            var reportViewModel = new ReportViewModel(montlyIncomeReports, monthlyExpenseReports, accounts);
+            return View(transactions);
+        }
+
 
         #region Helper Methods
 
@@ -82,19 +93,18 @@ namespace WebAccountantASP.Controllers
             return date;
         }
 
-        //Finds the first date of this month
-        public DateTime FindTheFirstDayOfThisMonth()
+        public List<Transaction> GetMonthlyTransactions(List<Transaction> transactions, int month, int year)
         {
-            var date = DateTime.Now;
-            var firstDayOfTheMonth = new DateTime(date.Year, date.Month, 1);
-            return firstDayOfTheMonth;
+            var montlyTransactions = transactions.Where(x => x.Date.Year == year && x.Date.Month == month).ToList();
+            return montlyTransactions;
         }
 
+
         //Gets a list of transaction from the given date
-        public List<Transaction> GetTransactions(DateTime date)
+        public List<Transaction> GetTransactions(DateTime date, List<Transaction> transactions)
         {
-            var transactions = _context.Transactions.Where(x => x.Date >= date).ToList();
-            return transactions;
+            var selectedTransactions = transactions.Where(x => x.Date >= date).ToList();
+            return selectedTransactions;
         }
 
         //Creates a list of reports for each account based on given type and list
@@ -125,6 +135,24 @@ namespace WebAccountantASP.Controllers
             }
             return reports;
 
+        }
+
+        public List<ArchiveEntry> ArchiveTransactions(List<Transaction> transactions)
+        {
+            var archived = transactions.GroupBy(x => new
+            {
+                Month = x.Date.Month,
+                Year = x.Date.Year
+            })
+                .Select(o => new ArchiveEntry
+                {
+                    Month = o.Key.Month,
+                    Year = o.Key.Year
+                })
+                .OrderByDescending(a => a.Year)
+                .ThenByDescending(a => a.Month)
+                .ToList();
+            return archived;
         }
 
         #endregion

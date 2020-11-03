@@ -12,13 +12,17 @@ namespace WebAccountantASP.ViewModel
         public Report Report { get; set; }
         public IEnumerable<Report> IncomeReports { get; set; }
         public IEnumerable<Report> ExpenseReports { get; set; }
+        public IEnumerable<ArchiveEntry> GroupedTransactions { get; set; }
         public double IncomeSum { get; set; }
         public double ExpenseSum { get; set; }
         public double Diference { get; set; }
         
         public IEnumerable<Account> Accounts { get; set; }
-        public ReportViewModel(IEnumerable<Report> income, IEnumerable<Report> expense, IEnumerable<Account> accounts)
+        //TODO: Find a better way to build this ViewModel, maybe without constructor
+
+        public ReportViewModel(IEnumerable<Report> income, IEnumerable<Report> expense, IEnumerable<Account> accounts, IEnumerable<ArchiveEntry> groupedTransactions)
         {
+            GroupedTransactions = groupedTransactions;
             Report = new Report();
             Accounts = accounts;
             IncomeReports = income;

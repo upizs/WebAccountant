@@ -185,6 +185,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountType.cs" />
+    <Compile Include="Models\ArchiveEntry.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Transaction.cs" />

@@ -11,6 +11,33 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+@foreach (var group in Model.GroupedTransactions.GroupBy(m => m.Year))
+{
+    <ul>
+        <li>
+            @group.Key
+            <ul>
+                @foreach (var item in group)
+                {
+                    <li>
+                        @Html.RouteLink(
+                                string.Format("{0}", item.MonthName),
+                                "",
+                                new 
+                                {
+                                    controller = "Report",
+                                    action = "MontlyReport",
+                                    year = item.Year,
+                                    month = item.Month
+                                })
+                    </li>
+                }
+            </ul>
+        </li>
+    </ul>
+
+}
+
 <div>
     @if (Model != null)
     {
