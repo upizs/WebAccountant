@@ -182,6 +182,10 @@
     <Compile Include="Migrations\202010211929303_Removed AccountID fom epot.designer.cs">
       <DependentUpon>202010211929303_Removed AccountID fom epot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011032055002_Removing Report from db.cs" />
+    <Compile Include="Migrations\202011032055002_Removing Report from db.designer.cs">
+      <DependentUpon>202011032055002_Removing Report from db.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountType.cs" />
@@ -286,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010211929303_Removed AccountID fom epot.resx">
       <DependentUpon>202010211929303_Removed AccountID fom epot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011032055002_Removing Report from db.resx">
+      <DependentUpon>202011032055002_Removing Report from db.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

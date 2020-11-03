@@ -94,3 +94,4 @@ D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.experimentingwithAccountTypeID.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.Reportnowhasonlyonevalue.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.RemovedAccountIDfomepot.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.RemovingReportfromdb.resources
