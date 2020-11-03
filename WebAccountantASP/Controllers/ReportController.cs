@@ -73,6 +73,7 @@ namespace WebAccountantASP.Controllers
         {
             var transactions = _context.Transactions.ToList();
             var accounts = _context.Accounts.ToList();
+            var archivedTransactions = ArchiveTransactions(transactions);
 
             var monthlyTransactions = GetMonthlyTransactions(transactions, month, year);
 
@@ -83,10 +84,13 @@ namespace WebAccountantASP.Controllers
             {
                 Accounts = accounts,
                 IncomeReports = montlyIncomeReports,
-                ExpenseReports = monthlyExpenseReports
+                ExpenseReports = monthlyExpenseReports,
+                Archives = archivedTransactions
+                
             };
 
-            return View(reportViewModel);
+            //use the same view as no need for different
+            return View("Index", reportViewModel);
         }
 
 

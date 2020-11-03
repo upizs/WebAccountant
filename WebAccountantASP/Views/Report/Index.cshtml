@@ -11,31 +11,34 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@foreach (var group in Model.Archives.GroupBy(m => m.Year))
+@if (Model.Archives != null)
 {
-    <ul>
-        <li>
-            @group.Key
+    foreach (var group in Model.Archives.GroupBy(m => m.Year))
+        {
             <ul>
-                @foreach (var item in group)
-                {
-                    <li>
-                        @Html.RouteLink(
-                                string.Format("{0}", item.MonthName),
-                                "",
-                                new 
-                                {
-                                    controller = "Report",
-                                    action = "MontlyReport",
-                                    year = item.Year,
-                                    month = item.Month
-                                })
-                    </li>
-                }
+                <li>
+                    @group.Key
+                    <ul>
+                        @foreach (var item in group)
+                        {
+                            <li>
+                                @Html.RouteLink(
+                                 string.Format("{0}", item.MonthName),
+                                 "",
+                                 new
+                                 {
+                                     controller = "Report",
+                                     action = "MontlyReport",
+                                     year = item.Year,
+                                     month = item.Month
+                                 })
+                            </li>
+                        }
+                    </ul>
+                </li>
             </ul>
-        </li>
-    </ul>
 
+        }
 }
 
 <div>
@@ -69,7 +72,7 @@
 
 
 <div name="listOftransactions">
-    <h4>List of Transactions</h4>
+    
     <hr />
     @if (Model != null)
     {

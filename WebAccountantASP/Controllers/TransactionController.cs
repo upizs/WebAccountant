@@ -33,7 +33,7 @@ namespace WebAccountantASP.Controllers
         public ActionResult Index()
         {
 
-            var transactions = _context.Transactions.Include(s => s.Debit).Include(s => s.Credit).ToList();
+            var transactions = _context.Transactions.Include(s => s.Debit).Include(s => s.Credit).OrderByDescending(a => a.Date).ToList();
             var transaction = new Transaction();
             var accounts = _context.Accounts.ToList();
             var viewModel = new AddTransactionViewModel
