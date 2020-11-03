@@ -11,7 +11,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@foreach (var group in Model.GroupedTransactions.GroupBy(m => m.Year))
+@foreach (var group in Model.Archives.GroupBy(m => m.Year))
 {
     <ul>
         <li>

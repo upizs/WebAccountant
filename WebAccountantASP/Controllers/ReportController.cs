@@ -57,7 +57,13 @@ namespace WebAccountantASP.Controllers
 
 
             //create a report viewModel
-            var reportViewModel = new ReportViewModel(thisWeeksIncomeReports, thisWeeksExpenseReports, accounts, archivedTransactions);
+            var reportViewModel = new ReportViewModel()
+            {
+                Accounts = accounts,
+                IncomeReports = thisWeeksIncomeReports,
+                ExpenseReports = thisWeeksExpenseReports,
+                Archives = archivedTransactions
+            };
            
 
             return View(reportViewModel);
@@ -73,8 +79,14 @@ namespace WebAccountantASP.Controllers
             var monthlyExpenseReports = GetReports(AccountType.Expense, monthlyTransactions, accounts);
             var montlyIncomeReports = GetReports(AccountType.Income, monthlyTransactions, accounts);
 
-            var reportViewModel = new ReportViewModel(montlyIncomeReports, monthlyExpenseReports, accounts);
-            return View(transactions);
+            var reportViewModel = new ReportViewModel()
+            {
+                Accounts = accounts,
+                IncomeReports = montlyIncomeReports,
+                ExpenseReports = monthlyExpenseReports
+            };
+
+            return View(reportViewModel);
         }
 
 
@@ -113,18 +125,18 @@ namespace WebAccountantASP.Controllers
             var reports = new List<Report>();
             foreach (var acc in accounts)
             {
-                var isExpense = acc.AccountType == accountType;
+                var isRightType = acc.AccountType == accountType;
                 var thisAccountTransactions = new List<Transaction>();
 
                 //Find all transactions for this account in given list
-                //Check different Id because of how accounting works. Expense is debit and Income is Credit
+                //Check either Debit or Credit Id needs to be used because of how accounting works. Expense is debit and Income is Credit
                 if (accountType == AccountType.Expense)
                     thisAccountTransactions = transactions.Where(x => x.DebitId == acc.Id).ToList();
                 else if(accountType == AccountType.Income)
                     thisAccountTransactions = transactions.Where(x => x.CreditId == acc.Id).ToList();
                 
-                
-                if (isExpense && thisAccountTransactions.Any())
+                //if is rights account type and has transactions in given period, create report model for it
+                if (isRightType && thisAccountTransactions.Any())
                 {
                     var report = new Report();
                     report.Account = acc;
@@ -137,6 +149,7 @@ namespace WebAccountantASP.Controllers
 
         }
 
+        //Gets transactions and archives them by year and month in descending order
         public List<ArchiveEntry> ArchiveTransactions(List<Transaction> transactions)
         {
             var archived = transactions.GroupBy(x => new
@@ -144,6 +157,7 @@ namespace WebAccountantASP.Controllers
                 Month = x.Date.Month,
                 Year = x.Date.Year
             })
+                //create new archive entry for each group
                 .Select(o => new ArchiveEntry
                 {
                     Month = o.Key.Month,
