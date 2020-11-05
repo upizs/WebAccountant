@@ -32,8 +32,10 @@ namespace WebAccountantASP.Controllers
         // GET: Transaction
         public ActionResult Index()
         {
-
-            var transactions = _context.Transactions.Include(s => s.Debit).Include(s => s.Credit).OrderByDescending(a => a.Date).ToList();
+            //Get all the transactions and order so that the newest were at the top of the page
+            var transactions = GetTransactionsInOrder();
+            //Create an empty transaction as a template for the view.
+            //Because I cant use IEnumerable for HTML helper DisplayName
             var transaction = new Transaction();
             var accounts = _context.Accounts.ToList();
             var viewModel = new AddTransactionViewModel
@@ -78,5 +80,10 @@ namespace WebAccountantASP.Controllers
             return RedirectToAction("Index", "Transaction");
         }
 
+        
+        public List<Transaction> GetTransactionsInOrder()
+        {
+            return _context.Transactions.OrderByDescending(a => a.Date).ToList();
+        }
     }
 }

@@ -38,22 +38,24 @@ namespace WebAccountantASP.Controllers
         // Shows This weeks Report
         public ActionResult Index()
         {
-            //Finds last Thursday to produce report for the last week starting last friday
-            DateTime LastFriday = FindLastFriday();
+            //Get the date of the last Friday, because I am getting paid on fridays
+            //and I would like my short term Reports to be from Friday to Thursday
+            DateTime LastFridayDate = GetLastFriday();
 
-            //Get all the transactions and sort them by year and month
-            var transactions = _context.Transactions.ToList();
+            //Archive all transactions in months and years to create a report navigation bar
+            //The user then can view transactions by months and years
+            var archivedTransactions = ArchiveTransactions();
 
-            var archivedTransactions = ArchiveTransactions(transactions);
+            //Get all the transactions since last friday
+            //This is for the weekly report, only available for this week for now
+            var thisWeeksTransactions = FilterTransactions(LastFridayDate);
 
-            //Get all the transactions between selected time period
-            var thisWeeksTransactions = GetTransactions(LastFriday, transactions);
-
+            //Get the list of all accounts for the view
             var accounts = _context.Accounts.ToList();
 
-            //Get this weeks reports 
-            var thisWeeksExpenseReports = GetReports(AccountType.Expense, thisWeeksTransactions, accounts);
-            var thisWeeksIncomeReports = GetReports(AccountType.Income, thisWeeksTransactions, accounts);
+            //Create this weeks reports 
+            var thisWeeksExpenseReports = CreateReports(AccountType.Expense, thisWeeksTransactions, accounts);
+            var thisWeeksIncomeReports = CreateReports(AccountType.Income, thisWeeksTransactions, accounts);
 
 
             //create a report viewModel
@@ -71,14 +73,13 @@ namespace WebAccountantASP.Controllers
 
         public ActionResult MontlyReport(int year, int month)
         {
-            var transactions = _context.Transactions.ToList();
             var accounts = _context.Accounts.ToList();
-            var archivedTransactions = ArchiveTransactions(transactions);
+            var archivedTransactions = ArchiveTransactions();
 
-            var monthlyTransactions = GetMonthlyTransactions(transactions, month, year);
+            var monthlyTransactions = GetMonthlyTransactions(month, year);
 
-            var monthlyExpenseReports = GetReports(AccountType.Expense, monthlyTransactions, accounts);
-            var montlyIncomeReports = GetReports(AccountType.Income, monthlyTransactions, accounts);
+            var monthlyExpenseReports = CreateReports(AccountType.Expense, monthlyTransactions, accounts);
+            var montlyIncomeReports = CreateReports(AccountType.Income, monthlyTransactions, accounts);
 
             var reportViewModel = new ReportViewModel()
             {
@@ -96,8 +97,8 @@ namespace WebAccountantASP.Controllers
 
         #region Helper Methods
 
-        //Finds the date of the last thursday
-        public DateTime FindLastFriday()
+        //Gets the date of the Last Friday for this weeks report
+        public DateTime GetLastFriday()
         {
             
             var date = DateTime.Now;
@@ -109,22 +110,22 @@ namespace WebAccountantASP.Controllers
             return date;
         }
 
-        public List<Transaction> GetMonthlyTransactions(List<Transaction> transactions, int month, int year)
+        public List<Transaction> GetMonthlyTransactions(int month, int year)
         {
-            var montlyTransactions = transactions.Where(x => x.Date.Year == year && x.Date.Month == month).ToList();
+            var montlyTransactions = _context.Transactions.Where(x => x.Date.Year == year && x.Date.Month == month).ToList();
             return montlyTransactions;
         }
 
 
         //Gets a list of transaction from the given date
-        public List<Transaction> GetTransactions(DateTime date, List<Transaction> transactions)
+        public List<Transaction> FilterTransactions(DateTime date)
         {
-            var selectedTransactions = transactions.Where(x => x.Date >= date).ToList();
+            var selectedTransactions = _context.Transactions.Where(x => x.Date >= date).ToList();
             return selectedTransactions;
         }
 
-        //Creates a list of reports for each account based on given type and list
-        public List<Report> GetReports (AccountType accountType, List<Transaction> transactions, List<Account> accounts)
+        //Creates a list of reports for each account based on given type and list of transactions
+        public List<Report> CreateReports (AccountType accountType, List<Transaction> transactions, List<Account> accounts)
         {
             var reports = new List<Report>();
             foreach (var acc in accounts)
@@ -154,9 +155,9 @@ namespace WebAccountantASP.Controllers
         }
 
         //Gets transactions and archives them by year and month in descending order
-        public List<ArchiveEntry> ArchiveTransactions(List<Transaction> transactions)
+        public List<ArchiveEntry> ArchiveTransactions()
         {
-            var archived = transactions.GroupBy(x => new
+            var archived = _context.Transactions.GroupBy(x => new
             {
                 Month = x.Date.Month,
                 Year = x.Date.Year
