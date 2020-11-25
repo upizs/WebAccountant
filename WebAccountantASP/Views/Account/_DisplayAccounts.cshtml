@@ -1,0 +1,30 @@
+﻿
+@model WebAccountantASP.ViewModel.AddAccountViewModel
+<div name="listOfAccounts">
+    
+    <hr />
+    @if (Model.Accounts != null)
+    {
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(Model => Model.Account.Name)</b> </td>
+                    <td><b>@Html.DisplayNameFor(Model => Model.Account.Value)</b></td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var account in Model.Accounts)
+                {
+                    <tr>
+                        <td>@account.Name</td>
+                        <td>@account.Value</td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    }
+</div>

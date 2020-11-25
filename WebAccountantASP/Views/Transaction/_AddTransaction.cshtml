@@ -1,0 +1,61 @@
+﻿@model WebAccountantASP.ViewModel.AddTransactionViewModel
+
+
+@using (Html.BeginForm("Add", "Transaction"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @*Debit*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Transaction.Debit, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @*DropDown box*@
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Transaction.DebitId,
+                                       new SelectList(Model.Accounts, "Id", "Name"),
+                                       "Select Account",
+                                       new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Transaction.Debit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        @*Credit*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Transaction.Credit, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @*DropDown box*@
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Transaction.CreditId,
+                                       new SelectList(Model.Accounts, "Id", "Name"),
+                                       "Select Account",
+                                       new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Transaction.Credit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*Value*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Transaction.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.Transaction.Value)
+                @Html.ValidationMessageFor(model => model.Transaction.Value, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}

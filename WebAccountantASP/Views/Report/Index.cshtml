@@ -5,99 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Reports</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-@if (Model.Archives != null)
-{
-    foreach (var group in Model.Archives.GroupBy(m => m.Year))
-        {
-            <ul>
-                <li>
-                    @group.Key
-                    <ul>
-                        @foreach (var item in group)
-                        {
-                            <li>
-                                @Html.RouteLink(
-                                 string.Format("{0}", item.MonthName),
-                                 "",
-                                 new
-                                 {
-                                     controller = "Report",
-                                     action = "MontlyReport",
-                                     year = item.Year,
-                                     month = item.Month
-                                 })
-                            </li>
-                        }
-                    </ul>
-                </li>
-            </ul>
-
-        }
-}
-
-<div>
-    @if (Model != null)
-    {
-        <table class="table">
-            
-
-            <tbody>
-                <tr>
-                    <td><b>Total Income</b></td>
-                    <td>@Model.IncomeSum</td>
-                </tr>
-                <tr>
-                    <td><b>Total Expense</b></td>
-                    <td>@Model.ExpenseSum</td>
-                </tr>
-                <tr>
-                    <td><b>Diference</b></td>
-                    <td>@Model.Diference</td>
-                </tr>
-
-            </tbody>
+@Html.Partial("_MontlyNav")
 
 
+@Html.Partial("_ReportSummary")
 
-        </table>
-    }
-</div>
+@Html.Partial("_DisplayReport")
 
-
-
-<div name="listOftransactions">
-    
-    <hr />
-    @if (Model != null)
-    {
-        <table class="table">
-
-            <thead>
-                <tr>
-                    <td><b>@Html.DisplayNameFor(e => e.Report.Account)</b></td>
-                    <td><b>@Html.DisplayNameFor(e => e.Report.Value)</b> </td>
-                </tr>
-            </thead>
-
-            <tbody>
-
-                @foreach (var report in Model.ExpenseReports)
-                {
-                    <tr>
-                        <td>@report.Account.Name</td>
-                        <td>@report.Value </td>
-                        
-                    </tr>
-                }
-                
-            </tbody>
-
-        </table>
-    }
-</div>

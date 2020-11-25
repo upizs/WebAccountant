@@ -1,0 +1,34 @@
+﻿@model WebAccountantASP.ViewModel.AddTransactionViewModel
+
+<div name="listOftransactions">
+    <hr />
+    @if (Model != null)
+    {
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(e => e.Transactions.Single().Date)</b></td>
+                    <td><b>@Html.DisplayNameFor(e => e.Transactions.Single().Debit)</b> </td>
+                    <td><b>@Html.DisplayNameFor(e => e.Transactions.Single().Credit)</b></td>
+                    <td><b>@Html.DisplayNameFor(e => e.Transactions.Single().Value)</b></td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var transaction in Model.Transactions)
+                {
+                    <tr>
+                        <td>@transaction.Date.ToShortDateString()</td>
+                        <td>@transaction.Debit.Name </td>
+                        <td>@transaction.Credit.Name</td>
+                        <td>@transaction.Value</td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    }
+</div>
+

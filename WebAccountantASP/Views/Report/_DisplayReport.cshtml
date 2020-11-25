@@ -1,0 +1,33 @@
+﻿@model WebAccountantASP.ViewModel.ReportViewModel
+
+
+<div name="listOftransactions">
+
+    <hr />
+    @if (Model != null)
+    {
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(e => e.Report.Account)</b></td>
+                    <td><b>@Html.DisplayNameFor(e => e.Report.Value)</b> </td>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var report in Model.ExpenseReports)
+                {
+                    <tr>
+                        <td>@report.Account.Name</td>
+                        <td>@report.Value </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    }
+</div>

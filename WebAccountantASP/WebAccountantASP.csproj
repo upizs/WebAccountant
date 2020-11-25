@@ -232,12 +232,17 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Transaction\Index.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Account\_AddAccount.cshtml" />
+    <Content Include="Views\Account\_DisplayAccounts.cshtml" />
+    <Content Include="Views\Report\_MontlyNav.cshtml" />
+    <Content Include="Views\Report\_ReportSummary.cshtml" />
+    <Content Include="Views\Report\_DisplayReport.cshtml" />
+    <Content Include="Views\Transaction\_AddTransaction.cshtml" />
+    <Content Include="Views\Transaction\_DisplayTransactions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

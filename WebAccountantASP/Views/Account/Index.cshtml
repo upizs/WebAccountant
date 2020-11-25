@@ -6,92 +6,12 @@
 }
 
 <h2>Accounts</h2>
-
-@*Add account form*@
-@using (Html.BeginForm("Add", "Account"))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-inline">
-        <h4>Add Account</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@*Add Account Form*@
+@Html.Partial("_AddAccount")
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Account.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Account.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Account.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Account.Value, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Account.Value, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Account.Value, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-group">
-                @Html.LabelFor(m => m.Account.AccountType)
-                @Html.DropDownListFor(m => m.Account.AccountType,
-                                        new SelectList(Model.AccountTypes),
-                                        "Select Type",
-                                        new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Account.AccountType, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-15 col-md-10">
-                <input type="submit" value="Add" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-@*A table showing all the accounts*@
-<div name="listOfAccounts">
-    <h4>List of Accounts</h4>
-    <hr />
-    @if (Model.Accounts != null)
-    {
-        <table class="table">
-
-            <thead>
-                <tr>
-                    <td><b>@Html.DisplayNameFor(e => e.Account.Name)</b> </td>
-                    <td><b>@Html.DisplayNameFor(e => e.Account.Value)</b></td>
-                </tr>
-            </thead>
-
-            <tbody>
-                @foreach (var account in Model.Accounts)
-                {
-                    <tr>
-                        <td>@account.Name</td>
-                        <td>@account.Value</td>
-                    </tr>
-                }
-
-            </tbody>
-
-        </table>
-    }
-</div>
-
-
-
-
-
-@*Buttons at the end of the form*@
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+@*List Of Accounts*@
+@Html.Partial("_DisplayAccounts")
 
 
 @section Scripts {
