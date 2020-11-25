@@ -90,7 +90,7 @@
                 @foreach (var transaction in Model.Transactions)
                 {
                     <tr>
-                        <td>@transaction.Date</td>
+                        <td>@transaction.Date.ToShortDateString()</td>
                         <td>@transaction.Debit.Name </td>
                         <td>@transaction.Credit.Name</td>
                         <td>@transaction.Value</td>

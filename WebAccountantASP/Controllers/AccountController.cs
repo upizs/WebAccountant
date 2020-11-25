@@ -31,6 +31,7 @@ namespace WebAccountantASP.Controllers
         // GET: Account
         public ActionResult Index()
         {
+            
             var accounts = _context.Accounts.OrderByDescending(a => a.Value).ToList();
             var account = new Account();
             var accountTypes = Enum.GetValues(typeof(AccountType)).Cast<AccountType>().ToList();

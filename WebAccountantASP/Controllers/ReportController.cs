@@ -101,7 +101,7 @@ namespace WebAccountantASP.Controllers
         public DateTime GetLastFriday()
         {
             
-            var date = DateTime.Now;
+            var date = DateTime.Now.Date;
             while (date.DayOfWeek != DayOfWeek.Friday)
             {
                 date = date.AddDays(-1);

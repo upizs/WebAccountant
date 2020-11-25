@@ -84,7 +84,6 @@ D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.pdb
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.InitialModel.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.GenerateResource.cache
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.AddedTransactions.resources
-D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.seedSomeTransactions.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.ReportModelAdded.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.RemovingIsDebitbool.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.Addedaccounttype.resources
@@ -95,3 +94,4 @@ D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.Reportnowhasonlyonevalue.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.RemovedAccountIDfomepot.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.RemovingReportfromdb.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.Cleanallthetables.resources

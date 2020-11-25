@@ -38,7 +38,8 @@ namespace WebAccountantASP.ViewModel
         {
             get
             {
-                return this. IncomeSum - this.ExpenseSum;
+                //Rounded because sometimes result appears to be having more than two decimal places
+                return Math.Round(this. IncomeSum - this.ExpenseSum,2);
             }
         }
 

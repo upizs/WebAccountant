@@ -134,6 +134,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Migrations\202010040441264_InitialModel.cs" />
     <Compile Include="Migrations\202010040441264_InitialModel.designer.cs">
       <DependentUpon>202010040441264_InitialModel.cs</DependentUpon>
@@ -141,10 +142,6 @@
     <Compile Include="Migrations\202010061917240_AddedTransactions.cs" />
     <Compile Include="Migrations\202010061917240_AddedTransactions.designer.cs">
       <DependentUpon>202010061917240_AddedTransactions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010062005408_seedSomeTransactions.cs" />
-    <Compile Include="Migrations\202010062005408_seedSomeTransactions.designer.cs">
-      <DependentUpon>202010062005408_seedSomeTransactions.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202010131914390_ReportModelAdded.cs" />
     <Compile Include="Migrations\202010131914390_ReportModelAdded.designer.cs">
@@ -185,6 +182,10 @@
     <Compile Include="Migrations\202011032055002_Removing Report from db.cs" />
     <Compile Include="Migrations\202011032055002_Removing Report from db.designer.cs">
       <DependentUpon>202011032055002_Removing Report from db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011052120534_Clean all the tables.cs" />
+    <Compile Include="Migrations\202011052120534_Clean all the tables.designer.cs">
+      <DependentUpon>202011052120534_Clean all the tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -261,9 +262,6 @@
     <EmbeddedResource Include="Migrations\202010061917240_AddedTransactions.resx">
       <DependentUpon>202010061917240_AddedTransactions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010062005408_seedSomeTransactions.resx">
-      <DependentUpon>202010062005408_seedSomeTransactions.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010131914390_ReportModelAdded.resx">
       <DependentUpon>202010131914390_ReportModelAdded.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011032055002_Removing Report from db.resx">
       <DependentUpon>202011032055002_Removing Report from db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011052120534_Clean all the tables.resx">
+      <DependentUpon>202011052120534_Clean all the tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
