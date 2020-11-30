@@ -3,6 +3,21 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    @*I put style here because I have to use Razor syntax to get AccountType*@
+    <style>
+        tr#account[data-content="@WebAccountantASP.Models.AccountType.Income"] {
+            background-color: #C1FEBA;
+        }
+        tr#account[data-content="@WebAccountantASP.Models.AccountType.Debit"] {
+            background-color: #CDFDF4;
+        }
+        tr#account[data-content="@WebAccountantASP.Models.AccountType.Credit"] {
+            background-color: #FFB3AA;
+        }
+
+    </style>
 }
 
 <h2>Accounts</h2>

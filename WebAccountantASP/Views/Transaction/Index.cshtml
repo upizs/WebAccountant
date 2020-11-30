@@ -5,6 +5,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*I put style here because I have to use Razor syntax to get AccountType*@
+<style>
+        @*If debit account is being debited means its an income*@
+        tr#transactions[data-content="@WebAccountantASP.Models.AccountType.Debit"] {
+            background-color: #C1FEBA;
+        }
+        @*If credit account is being debited means a loan is being paid, good thing*@
+        tr#transactions[data-content="@WebAccountantASP.Models.AccountType.Credit"] {
+            background-color: #CDFDF4;
+        }
+        @*If expense account is being debited then its an expense, obvios*@
+        tr#transactions[data-content="@WebAccountantASP.Models.AccountType.Expense"] {
+            background-color: #FFB3AA;
+        }
+
+</style>
+
 @Html.Partial("_AddTransaction")
 
 <h2>Transactions</h2>

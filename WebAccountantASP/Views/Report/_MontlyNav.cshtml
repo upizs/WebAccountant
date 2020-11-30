@@ -4,28 +4,35 @@
 {
     foreach (var group in Model.Archives.GroupBy(m => m.Year))
     {
-        <ul>
-            <li>
-                @group.Key
-                <ul>
-                    @foreach (var item in group)
-                    {
-                        <li>
-                            @Html.RouteLink(
-                             string.Format("{0}", item.MonthName),
-                             "",
-                             new
-                             {
-                                 controller = "Report",
-                                 action = "MontlyReport",
-                                 year = item.Year,
-                                 month = item.Month
-                             })
-                        </li>
-                    }
-                </ul>
-            </li>
-        </ul>
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("This Week", "Index", "Report")</li>
+                <li class="dropwdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        @group.Key
+                        <span class="caret"></span>
+                    </a>
+                    
+                    <ul class="dropdown-menu">
+                        @foreach (var item in group)
+                        {
+                            <li>
+                                @Html.RouteLink(
+                                 string.Format("{0}", item.MonthName),
+                                 "",
+                                 new
+                                 {
+                                     controller = "Report",
+                                     action = "MontlyReport",
+                                     year = item.Year,
+                                     month = item.Month
+                                 })
+                            </li>
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </nav>
 
     }
 }

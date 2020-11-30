@@ -18,7 +18,7 @@
             <tbody>
                 @foreach (var transaction in Model.Transactions)
                 {
-                    <tr>
+                    <tr data-content="@transaction.Debit.AccountType" id="transactions">
                         <td>@transaction.Date.ToShortDateString()</td>
                         <td>@transaction.Debit.Name </td>
                         <td>@transaction.Credit.Name</td>

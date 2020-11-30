@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
@@ -16,10 +17,13 @@ namespace WebAccountantASP.ViewModel
                 return new Report();
             }
         }
+        
         public IEnumerable<Report> IncomeReports { get; set; }
         public IEnumerable<Report> ExpenseReports { get; set; }
         public IEnumerable<ArchiveEntry> Archives { get; set; }
         public IEnumerable<Account> Accounts { get; set; }
+
+        [DisplayName("Total Income")]
         public double IncomeSum
         {
             get
@@ -27,6 +31,7 @@ namespace WebAccountantASP.ViewModel
                 return this.IncomeReports.Select(x => x.Value).Sum();
             }
         }
+        [DisplayName("Total Expense")]
         public double ExpenseSum
         {
             get
@@ -34,6 +39,7 @@ namespace WebAccountantASP.ViewModel
                 return this.ExpenseReports.Select(x => x.Value).Sum();
             }
         }
+        [DisplayName("Difference")]
         public double Diference
         {
             get
