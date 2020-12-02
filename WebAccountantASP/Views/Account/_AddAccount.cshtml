@@ -1,7 +1,7 @@
-﻿@model WebAccountantASP.ViewModel.AddAccountViewModel
+﻿@model WebAccountantASP.ViewModel.AccountFormViewModel
 
 
-@using (Html.BeginForm("Add", "Account"))
+@using (Html.BeginForm("Save", "Account"))
 {
     @Html.AntiForgeryToken()
 
@@ -39,9 +39,11 @@
             </div>
         </div>
 
+        @Html.HiddenFor(a => a.Account.Id)
+
         <div class="form-group">
             <div class="col-md-offset-15 col-md-10">
-                <input type="submit" value="Add" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
