@@ -25,7 +25,7 @@
                     @*For some reason null is necessary argument without it Link wont pick the id.*@
                     <td>@Html.ActionLink("Edit", "Edit", "Account", new { id = account.Id }, null)</td>
                     @*Couldnt make the delete method to work, will return to that later.*@
-                    @*<td>@Html.ActionLink("Delete", "DeleteAccount", "Account", new { id = account.Id }, null)</td>*@
+                    <td>@Html.ActionLink("Delete", "DeleteAccount", "Account", new { id = account.Id }, null)</td>
 
                 </tr>
                 }

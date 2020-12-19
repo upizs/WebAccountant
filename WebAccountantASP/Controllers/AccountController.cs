@@ -94,7 +94,7 @@ namespace WebAccountantASP.Controllers
             return View("Index", viewModel);
         }
 
-        [HttpPost]
+        
         public ActionResult DeleteAccount(int id)
         {
             var account = _context.Accounts.SingleOrDefault(a => a.Id == id);
