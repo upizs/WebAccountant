@@ -2,36 +2,117 @@
 @model WebAccountantASP.ViewModel.AccountFormViewModel
 
 <div name="listOfAccounts">
-    
+
     <hr />
-    @if (Model.Accounts != null)
+    @if (Model.DebitAccounts != null)
     {
         <table class="table" runat="server" id="Accounts">
 
             <thead class="thead">
                 <tr>
-                    <th scope="col"><b>@Html.DisplayNameFor(Model => Model.Account.Name)</b> </th>
+                    <th scope="col"><b>@Html.DisplayNameFor(Model => Model.DebitAccounts)</b> </th>
                     <th scope="col"><b>@Html.DisplayNameFor(Model => Model.Account.Value)</b></th>
+
+
                 </tr>
             </thead>
 
             <tbody>
-                @foreach (var account in Model.Accounts)
+                @foreach (var account in Model.DebitAccounts)
                 {
-                    
-                <tr data-content="@account.AccountType" id="account">
-                    <td scope="row">@account.Name</td>
-                    <td>@account.Value</td>
-                    @*For some reason null is necessary argument without it Link wont pick the id.*@
-                    <td>@Html.ActionLink("Edit", "Edit", "Account", new { id = account.Id }, null)</td>
-                    @*Couldnt make the delete method to work, will return to that later.*@
-                    <td>@Html.ActionLink("Delete", "DeleteAccount", "Account", new { id = account.Id }, null)</td>
+
+                    <tr  id="account">
+                        <td scope="row">@account.Name</td>
+                        <td>@account.Value</td>
+                        @*For some reason null is necessary argument without it Link wont pick the id.*@
+                        <td>@Html.ActionLink("Edit", "Edit", "Account", new { id = account.Id }, null)</td>
+                        @*Couldnt make the delete method to work, will return to that later.*@
+                        <td>@Html.ActionLink("Delete", "DeleteAccount", "Account", new { id = account.Id }, null)</td>
+
+                    </tr>
+
+                }
+                <tr class = "@(Model.TotalCredit < 0 ? "bg-danger" : "bg-success" )">
+                    <td>@Html.DisplayNameFor(Model => Model.TotalDebit)</td>
+                    <td>@Model.TotalDebit</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    }
+
+    @if (Model.CreditAccounts != null)
+    {
+        <table class="table" runat="server" id="Accounts">
+
+            <thead class="thead">
+                <tr>
+                    <th scope="col"><b>@Html.DisplayNameFor(Model => Model.CreditAccounts)</b> </th>
+                    <th scope="col"><b>@Html.DisplayNameFor(Model => Model.Account.Value)</b></th>
+
 
                 </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var account in Model.CreditAccounts)
+                {
+
+                    <tr id="account">
+                        <td scope="row">@account.Name</td>
+                        <td>@account.Value</td>
+                        @*For some reason null is necessary argument without it Link wont pick the id.*@
+                        <td>@Html.ActionLink("Edit", "Edit", "Account", new { id = account.Id }, null)</td>
+                        @*Couldnt make the delete method to work, will return to that later.*@
+                        <td>@Html.ActionLink("Delete", "DeleteAccount", "Account", new { id = account.Id }, null)</td>
+
+                    </tr>
+
+                }
+                <tr class = "@(Model.TotalCredit > 0 ? "bg-danger" : "bg-success" )" >
+                    <td>@Html.DisplayNameFor(Model => Model.TotalCredit)</td>
+                    <td>@Model.TotalCredit</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    }
+
+    @if (Model.ExpenseIncomeAccounts != null)
+    {
+        <table class="table" runat="server" id="Accounts">
+
+            <thead class="thead">
+                <tr>
+                    <th scope="col"><b>@Html.DisplayNameFor(Model => Model.ExpenseIncomeAccounts)</b> </th>
+                    <th scope="col"><b>@Html.DisplayNameFor(Model => Model.Account.Value)</b></th>
+
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var account in Model.ExpenseIncomeAccounts)
+                {
+
+                    <tr id="account">
+                        <td scope="row">@account.Name</td>
+                        <td>@account.Value</td>
+                        @*For some reason null is necessary argument without it Link wont pick the id.*@
+                        <td>@Html.ActionLink("Edit", "Edit", "Account", new { id = account.Id }, null)</td>
+                        @*Couldnt make the delete method to work, will return to that later.*@
+                        <td>@Html.ActionLink("Delete", "DeleteAccount", "Account", new { id = account.Id }, null)</td>
+
+                    </tr>
+
                 }
 
             </tbody>
-            
+
         </table>
     }
+
+
 </div>

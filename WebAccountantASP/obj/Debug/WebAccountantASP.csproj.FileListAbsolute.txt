@@ -77,12 +77,7 @@ D:\Projects\WebAccountant\WebAccountantASP\bin\Newtonsoft.Json.xml
 D:\Projects\WebAccountant\WebAccountantASP\bin\Antlr3.Runtime.pdb
 D:\Projects\WebAccountant\WebAccountantASP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csprojAssemblyReference.cache
-D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.CoreCompileInputs.cache
-D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.CopyComplete
-D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.dll
-D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.pdb
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.InitialModel.resources
-D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.GenerateResource.cache
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.AddedTransactions.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.ReportModelAdded.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.RemovingIsDebitbool.resources
@@ -95,3 +90,8 @@ D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.RemovedAccountIDfomepot.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.RemovingReportfromdb.resources
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.Cleanallthetables.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.GenerateResource.cache
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.CoreCompileInputs.cache
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.CopyComplete
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.dll
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.pdb

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebAccountantASP.Models;
@@ -31,8 +32,11 @@ namespace WebAccountantASP.Controllers
         // GET: Account
         public ActionResult Index()
         {
-            
-            var accounts = _context.Accounts.OrderByDescending(a => a.Value).ToList();
+            //I collect all the accounts separeted by their AccountType so I can see my totals
+            var debitAccounts = _context.Accounts.Where(x => x.AccountType == AccountType.Debit).ToList();
+            var creditAccounts = _context.Accounts.Where(x => x.AccountType == AccountType.Credit).ToList();
+            //Expense and Income are together because they are not Balance Accounts, so their totals dont matter in account page. 
+            var expenseIncomeAccounts = _context.Accounts.Where(x => x.AccountType == AccountType.Income || x.AccountType == AccountType.Expense).ToList();
             //creating an empty account for the form
             var account = new Account();
             var accountTypes = Enum.GetValues(typeof(AccountType)).Cast<AccountType>().ToList();
@@ -40,7 +44,9 @@ namespace WebAccountantASP.Controllers
             //set up a viewModel so that I can use a list of accounts and a single account
             var viewModel = new AccountFormViewModel
             {
-                Accounts = accounts,
+                DebitAccounts = debitAccounts,
+                CreditAccounts = creditAccounts,
+                ExpenseIncomeAccounts = expenseIncomeAccounts,
                 Account = account,
                 AccountTypes = accountTypes
                 
@@ -102,8 +108,10 @@ namespace WebAccountantASP.Controllers
 
             _context.SaveChanges();
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
+
+        
 
         
     }
