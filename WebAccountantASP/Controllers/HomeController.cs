@@ -51,5 +51,29 @@ namespace WebAccountantASP.Controllers
 
             return View();
         }
+        public ActionResult RecordBalance()
+        {
+            RecordBalanceData();
+            return View("Index");
+        }
+
+        public void RecordBalanceData()
+        {
+            var CreditDebitAccounts = _context.Accounts.Where(x => x.AccountType == AccountType.Credit || x.AccountType == AccountType.Debit).ToList();
+            foreach (var acc in CreditDebitAccounts)
+            {
+                var balanceReport = new BalanceReport
+                {
+                    AccountId = acc.Id,
+                    Date = DateTime.Now,
+                    Value = acc.Value
+                };
+                _context.BalanceData.Add(balanceReport);
+            }
+            _context.SaveChanges();
+        }
+
+
+        
     }
 }

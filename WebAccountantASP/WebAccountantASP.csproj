@@ -189,10 +189,24 @@
     <Compile Include="Migrations\202011052120534_Clean all the tables.designer.cs">
       <DependentUpon>202011052120534_Clean all the tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012280433351_Added BalanceData table.cs" />
+    <Compile Include="Migrations\202012280433351_Added BalanceData table.designer.cs">
+      <DependentUpon>202012280433351_Added BalanceData table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012280439230_Added Foreign Key to BalanceReport.cs" />
+    <Compile Include="Migrations\202012280439230_Added Foreign Key to BalanceReport.designer.cs">
+      <DependentUpon>202012280439230_Added Foreign Key to BalanceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012280450349_Added DateKeeper table.cs" />
+    <Compile Include="Migrations\202012280450349_Added DateKeeper table.designer.cs">
+      <DependentUpon>202012280450349_Added DateKeeper table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountType.cs" />
     <Compile Include="Models\ArchiveEntry.cs" />
+    <Compile Include="Models\BalanceReport.cs" />
+    <Compile Include="Models\DateKeeper.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Transaction.cs" />
@@ -391,6 +405,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011052120534_Clean all the tables.resx">
       <DependentUpon>202011052120534_Clean all the tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012280433351_Added BalanceData table.resx">
+      <DependentUpon>202012280433351_Added BalanceData table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012280439230_Added Foreign Key to BalanceReport.resx">
+      <DependentUpon>202012280439230_Added Foreign Key to BalanceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012280450349_Added DateKeeper table.resx">
+      <DependentUpon>202012280450349_Added DateKeeper table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

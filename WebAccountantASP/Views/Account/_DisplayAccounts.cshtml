@@ -32,10 +32,13 @@
                     </tr>
 
                 }
-                <tr class = "@(Model.TotalCredit < 0 ? "bg-danger" : "bg-success" )">
-                    <td>@Html.DisplayNameFor(Model => Model.TotalDebit)</td>
-                    <td>@Model.TotalDebit</td>
-                </tr>
+            <tr class="@(Model.TotalCredit < 0 ? "bg-danger" : "bg-success" )">
+                <td>@Html.DisplayNameFor(Model => Model.TotalDebit)</td>
+                <td>@Model.TotalDebit</td>
+                @*Added empthy columns to stretch the row in all lenght of the table*@
+                <td></td>
+                <td></td>
+            </tr>
 
             </tbody>
 
@@ -64,15 +67,19 @@
                         <td>@account.Value</td>
                         @*For some reason null is necessary argument without it Link wont pick the id.*@
                         <td>@Html.ActionLink("Edit", "Edit", "Account", new { id = account.Id }, null)</td>
-                        @*Couldnt make the delete method to work, will return to that later.*@
                         <td>@Html.ActionLink("Delete", "DeleteAccount", "Account", new { id = account.Id }, null)</td>
 
                     </tr>
 
                 }
-                <tr class = "@(Model.TotalCredit > 0 ? "bg-danger" : "bg-success" )" >
+
+                @*Change class depending on account state*@
+                <tr class="@(Model.TotalCredit > 0 ? "bg-danger" : "bg-success" )">
                     <td>@Html.DisplayNameFor(Model => Model.TotalCredit)</td>
                     <td>@Model.TotalCredit</td>
+                    @*Added empthy columns to stretch the row in all lenght of the table*@
+                    <td></td>
+                    <td></td>
                 </tr>
 
             </tbody>

@@ -10,5 +10,7 @@ namespace WebAccountantASP.Models
     {
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<BalanceReport> BalanceData { get; set; }
+        public DbSet<DateKeeper> DateKeeper { get; set; }
     }
 }

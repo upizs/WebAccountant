@@ -95,3 +95,6 @@ D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.Cor
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.csproj.CopyComplete
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.dll
 D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.pdb
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.AddedBalanceDatatable.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.AddedForeignKeytoBalanceReport.resources
+D:\Projects\WebAccountant\WebAccountantASP\obj\Debug\WebAccountantASP.Migrations.AddedDateKeepertable.resources
